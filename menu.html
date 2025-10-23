@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Céleri — Sample Menu</title>
 
-  <!-- Fonts used on this page only -->
+
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== page-scoped variables (local, so we don't need app.css) ===== */
+   
     :root{
       --bg: #F1E9D6;
       --ink: #0f1a1d;
-      --paper: #e4dfd6;   /* card background inspired by your screenshots */
+      --paper: #e4dfd6;   
     }
 
-    /* ===== page shell (scoped to #menu-page only) ===== */
+
     body#menu-page{
       margin: 0;
       background: var(--bg);
@@ -35,24 +35,24 @@
 
     .menu-wrapper{
       display: flex;
-      gap: clamp(24px, 4vw, 48px);     /* space between menus */
-      flex-wrap: wrap;                 /* stack on phones */
+      gap: clamp(24px, 4vw, 48px);     
+      flex-wrap: wrap;                 
       justify-content: center;
       max-width: 1200px;
       width: 100%;
     }
 
-    /* ===== each menu “card” ===== */
+
     .menu-card{
       background: var(--paper);
       border: 10px solid var(--ink);
       padding: clamp(20px, 3vw, 32px);
-      flex: 1 1 460px;                 /* responsive width */
+      flex: 1 1 460px;                
       max-width: 560px;
       box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
     }
 
-    /* header (title + celery) */
+  
     .menu-header{
       display: flex;
       justify-content: space-between;
@@ -74,7 +74,7 @@
       margin-left: 12px;
     }
 
-    /* section bumpers */
+   
     .menu-section{
       font-family: "Jost", sans-serif;
       font-weight: 600;
@@ -84,7 +84,7 @@
       font-size: clamp(13px, 1.6vmin, 16px);
     }
 
-    /* items */
+   
     .menu-item{ margin: 0 0 1.1rem; }
 
     .menu-item h4{
@@ -107,7 +107,7 @@
       text-decoration: none;
     }
 
-    /* simple back link (optional) */
+   
     .back{
       display:inline-block;
       margin: 0 0 18px;
@@ -125,7 +125,7 @@
 
     <div class="menu-wrapper">
 
-      <!-- MENU A -->
+   
       <section class="menu-card" aria-labelledby="menu-a-title">
         <header class="menu-header">
           <h2 class="menu-title" id="menu-a-title">Sample Menu</h2>
@@ -169,7 +169,7 @@
         </div>
       </section>
 
-      <!-- MENU B (Vegetarian) -->
+     
       <section class="menu-card" aria-labelledby="menu-b-title">
         <header class="menu-header">
           <h2 class="menu-title" id="menu-b-title">Sample Menu: Vegetarian</h2>
