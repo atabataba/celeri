@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Céleri</title>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="app.css" />
+
+  <!-- Jost Light 300 -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="hero">
+    <!-- Left: logo + stacked name -->
+    <div class="lockup">
+      <img class="logo" src="images/celery-logo.png" alt="Céleri logo" />
+      <h1 class="brand-name" aria-label="Céleri">
+        <span>CÉ</span>
+        <span>LE</span>
+        <span>RI</span>
+      </h1>
+    </div>
+
+    <!-- Right side: tabs + contact block -->
+    <section class="right">
+      <!-- Image tabs -->
+      <div class="tabs">
+        <a class="tab" href="services.html" aria-label="Services">
+          <img src="images/broc.png" alt="Services" />
+          <span class="tab-label">Services</span>
+        </a>
+
+        <a class="tab tomato" href="menu.html" aria-label="Sample Menu">
+          <img src="images/tomato.png" alt="Sample Menu" />
+          <span class="tab-label">Sample Menu</span>
+        </a>
+
+        <a class="tab mush" href="about.html" aria-label="About">
+          <img src="images/mush.png" alt="About" />
+          <span class="tab-label">About</span>
+        </a>
+
+        <!-- Instagram tab (sits to the right of mushroom) -->
+        <a class="tab insta" href="https://instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="images/insta.png" alt="Instagram" />
+          <span class="tab-label">Instagram</span>
+        </a>
+      </div>
+
+      <!-- Contact block -->
+      <div class="contact-block">
+        <div class="line1">PERSONAL CHEF SERVICES</div>
+        <div class="line2">BERKELEY, OAKLAND, AND SAN FRANCISCO</div>
+
+        <!-- Thin, hand-drawn circled email -->
+        <a class="email-loop" href="mailto:info@celeri.com" aria-label="Email Celeri">
+          <span>INFO@CELERI.COM</span>
+
+          <svg class="loop" viewBox="0 0 300 120" aria-hidden="true" preserveAspectRatio="none">
+            <defs>
+              <filter id="squiggle-soft">
+                <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="1" seed="6"/>
+                <feDisplacementMap in="SourceGraphic" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+
+            <!-- pass 1 -->
+            <path d="M20,60
+                     C 22,24  278,22  280,60
+                     C 282,98  24,96   20,60 Z"
+                  filter="url(#squiggle-soft)"/>
+            <!-- pass 2 (slightly offset) -->
+            <path d="M18,62
+                     C 20,26  276,24  282,61
+                     C 284,94  26,96   18,62 Z"
+                  opacity="0.85"
+                  filter="url(#squiggle-soft)"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

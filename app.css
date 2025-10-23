@@ -1,0 +1,315 @@
+/* Sud webfont (self-hosted) */
+@font-face {
+    font-family: "Sud";
+    src: url("fonts/Sud.woff2") format("woff2"),
+         url("fonts/Sud.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* ---- Quick knobs ---- */
+  :root {
+    --bg: #F1E9D6;
+    --ink: #0f1a1d;
+  
+    /* Hand-drawn loop color */
+    --berkeley-blue: #B1A380;
+  
+    --pad-y: clamp(16px, 5vh, 48px);
+    --pad-x: clamp(12px, 2vw, 24px);
+    --gap: clamp(2px, 0.5vw, 8px);
+  
+    --logo-w: clamp(600px, 45vmin, 800px);
+    --name-size: clamp(150px, 15vmin, 200px);
+  
+    /* tabs tuning */
+    --tab-size: clamp(100px, 14vmin, 160px);
+    --tab-gap: clamp(12px, 2vw, 24px);
+    --tab-shift: 80px;
+  
+    /* reveal animation knobs */
+    --reveal-duration: 1s;
+    --reveal-ease: ease;
+    --reveal-offset: 20px;
+  
+    /* vertical position of the tabs + info block */
+    --right-top: 33%;
+  }
+  
+  /* ------------------------------------------------------- */
+  * { box-sizing: border-box; }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* non-scrollable */
+  }
+  
+  body {
+    background: var(--bg);
+    color: var(--ink);
+  }
+  
+  /* Full-viewport hero, left aligned */
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0rem;
+    padding-top: 2rem;
+    position: relative;
+  }
+  
+  /* ---------- Fade-in keyframes ---------- */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(var(--reveal-offset)); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Row: logo | stacked name */
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    margin-left: -4rem;
+  
+    opacity: 0;
+    animation: fadeInUp var(--reveal-duration) var(--reveal-ease) forwards;
+    animation-delay: 0.15s;
+  }
+  
+  .logo {
+    width: var(--logo-w);
+    height: auto;
+    display: block;
+  }
+  
+  .brand-name {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Sud", sans-serif;
+    font-weight: 400;
+    line-height: 0.9;
+    font-size: var(--name-size);
+    transform: translateY(-5%);
+    margin-left: -10rem;
+  }
+  .brand-name > span { text-transform: uppercase; }
+  
+  /* ---------------- Right column: tabs + info block ---------------- */
+  .right {
+    position: absolute;
+    top: var(--right-top);
+    left: 45%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInUp var(--reveal-duration) var(--reveal-ease) forwards;
+    animation-delay: 0.6s;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    align-items: center;
+    gap: var(--tab-gap);
+  }
+  
+  .tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 350ms ease;
+  }
+  
+  .tab img {
+    display: block;
+    width: var(--tab-size);
+    height: auto;
+    transition: transform 350ms ease, opacity 250ms ease, filter 250ms ease;
+    cursor: pointer;
+  }
+  
+  /* Tab label (default on RIGHT of icon) */
+  .tab-label {
+    position: absolute;
+    left: calc(100% + 0.5rem);
+    top: 50%;
+    transform: translate(-8px, -50%);
+    opacity: 0;
+    white-space: nowrap;
+    transition: transform 300ms ease, opacity 300ms ease;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(16px, 2.2vmin, 22px);
+    color: var(--ink);
+  }
+  
+  /* Reveal hovered tab label */
+  .tab:hover .tab-label {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+  
+  /* Tomato tab label on LEFT */
+  .tab.tomato .tab-label {
+    left: auto;
+    right: calc(100% + 0.5rem);
+    transform: translate(8px, -50%);
+  }
+  .tab.tomato:hover .tab-label { transform: translate(0, -50%); opacity: 1; }
+  
+  /* Mushroom tab label on LEFT (slightly more room) */
+  .tab.mush .tab-label {
+    left: auto;
+    right: calc(100% + 0.875rem);
+    transform: translate(8px, -50%);
+  }
+  .tab.mush:hover .tab-label { transform: translate(0, -50%); opacity: 1; }
+  
+  /* Insta tab (smaller icon, no label shown) */
+  .tab.insta img {
+    width: calc(var(--tab-size) * 0.7);
+    transition: transform 250ms ease, opacity 250ms ease;
+  }
+  .tab.insta:hover img { transform: scale(1.1); opacity: 1; }
+  .tab.insta .tab-label { display: none; }
+  
+  /* Icon emphasis */
+  .tab:hover img { transform: translateX(8px) scale(1.05); }
+  .tab.mush:hover img { transform: scale(1.05); } /* no sideways nudge for mushroom */
+  
+  /* Dim non-hovered icons slightly */
+  .tabs:hover .tab:not(:hover) img {
+    opacity: 0.8;
+    filter: grayscale(10%);
+  }
+  
+  /* ************* Make space behavior ************* */
+  /* Hover broccoli -> shift tomato & mushroom (& insta) right */
+  .tabs .tab:first-child:hover ~ .tab { transform: translateX(var(--tab-shift)); }
+  
+  /* Hover tomato -> shift ONLY broccoli left (mushroom/insta stay) */
+  .tabs:has(.tab:nth-child(2):hover) .tab:first-child {
+    transform: translateX(calc(-1 * var(--tab-shift)));
+  }
+  
+  /* Hover mushroom -> nudge tomato left slightly (room for label) */
+  .tabs:has(.tab:nth-child(3):hover) .tab:nth-child(2) {
+    transform: translateX(calc(-0.3 * var(--tab-shift)));
+  }
+  
+  /* ---------------- Contact / service block ---------------- */
+  .contact-block {
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 2rem;
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    width: 100%;
+  }
+  
+  .contact-block .line1 {
+    font-size: clamp(18px, 2.4vmin, 24px);
+    text-transform: uppercase;
+  }
+  
+  .contact-block .line2 {
+    font-size: clamp(16px, 2.2vmin, 20px);
+    text-transform: uppercase;
+    opacity: 0.95;
+    margin-top: 0.15rem;
+  }
+  
+  /* -------- Hand-drawn circled email (thin & stable) -------- */
+  .email-loop{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.7rem;
+    padding: 0.6rem 1.2rem;          /* small padding so loop stays compact */
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+  }
+  .email-loop span{
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* The SVG wrapper: em-based sizing so it hugs the text consistently */
+  .email-loop .loop{
+    position: absolute;
+    inset: -0.55em -1.0em;           /* top/btm, left/right “padding” of the loop */
+    width: calc(100% + 2.0em);
+    height: calc(100% + 1.1em);
+    pointer-events: none;
+  }
+  
+  /* Thin, non-scaling stroke = stays delicate */
+  .email-loop .loop path{
+    fill: none;
+    stroke: var(--berkeley-blue);
+    vector-effect: non-scaling-stroke;
+    stroke-width: 2.25px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-width .16s ease, opacity .16s ease;
+  }
+  
+  /* Gentle hover—keeps it elegant */
+  .email-loop:hover .loop path{
+    stroke-width: 2.6px;
+    opacity: 0.98;
+  }
+  
+  /* Keyboard focus */
+  .email-loop:focus-visible{
+    outline: 2px dashed var(--berkeley-blue);
+    outline-offset: 6px;
+  }
+  
+  /* ----------------------------------------------------------------- */
+  @media (max-width: 700px) {
+    :root{
+      --logo-w: clamp(200px, 38vmin, 420px);
+      --name-size: clamp(60px, 13vmin, 140px);
+      --gap: clamp(2px, 1vw, 12px);
+  
+      --tab-size: clamp(80px, 20vw, 120px);
+      --tab-gap: 8px;
+      --tab-shift: 100px;
+  
+      --right-top: 42%;
+    }
+    .brand-name { margin-left: -6px; }
+    .right { left: 60%; }
+  }
+  
+  /* Respect reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .lockup,
+    .right,
+    .tab img,
+    .tab-label,
+    .email-loop .loop path {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+  

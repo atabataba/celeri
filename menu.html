@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Céleri — Sample Menu</title>
+
+  <!-- Fonts used on this page only -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== page-scoped variables (local, so we don't need app.css) ===== */
+    :root{
+      --bg: #F1E9D6;
+      --ink: #0f1a1d;
+      --paper: #e4dfd6;   /* card background inspired by your screenshots */
+    }
+
+    /* ===== page shell (scoped to #menu-page only) ===== */
+    body#menu-page{
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Jost", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.45;
+    }
+
+    .menu-frame{
+      min-height: 100svh;
+      padding: clamp(24px, 5vw, 56px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .menu-wrapper{
+      display: flex;
+      gap: clamp(24px, 4vw, 48px);     /* space between menus */
+      flex-wrap: wrap;                 /* stack on phones */
+      justify-content: center;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* ===== each menu “card” ===== */
+    .menu-card{
+      background: var(--paper);
+      border: 10px solid var(--ink);
+      padding: clamp(20px, 3vw, 32px);
+      flex: 1 1 460px;                 /* responsive width */
+      max-width: 560px;
+      box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+    }
+
+    /* header (title + celery) */
+    .menu-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+    .menu-title{
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(28px, 3.2vmin, 38px);
+      letter-spacing: .02em;
+    }
+    .menu-logo{
+      width: clamp(48px, 6vmin, 68px);
+      height: auto;
+      object-fit: contain;
+      margin-left: 12px;
+    }
+
+    /* section bumpers */
+    .menu-section{
+      font-family: "Jost", sans-serif;
+      font-weight: 600;
+      letter-spacing: .32em;
+      text-align: center;
+      margin: 1.5rem 0 .9rem;
+      font-size: clamp(13px, 1.6vmin, 16px);
+    }
+
+    /* items */
+    .menu-item{ margin: 0 0 1.1rem; }
+
+    .menu-item h4{
+      margin: 0 0 .35rem;
+      font-family: "Jost", sans-serif;
+      font-weight: 600;
+      font-size: clamp(16px, 2vmin, 18px);
+    }
+
+    .menu-item p{
+      margin: 0;
+      line-height: 1.55;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: clamp(15px, 1.9vmin, 17px);
+    }
+
+    .menu-item em{
+      font-style: italic;
+      text-decoration: none;
+    }
+
+    /* simple back link (optional) */
+    .back{
+      display:inline-block;
+      margin: 0 0 18px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 14px;
+      opacity:.8;
+    }
+    .back:hover{ opacity:1; }
+  </style>
+</head>
+
+<body id="menu-page">
+  <main class="menu-frame">
+
+    <div class="menu-wrapper">
+
+      <!-- MENU A -->
+      <section class="menu-card" aria-labelledby="menu-a-title">
+        <header class="menu-header">
+          <h2 class="menu-title" id="menu-a-title">Sample Menu</h2>
+          <img class="menu-logo" src="images/celery-logo.png" alt="Céleri mark" />
+        </header>
+
+        <h3 class="menu-section">DINNER ONE</h3>
+
+        <div class="menu-item">
+          <h4>Fall Greek Salad</h4>
+          <p>
+            Persian cucumbers, <em>Fuyu</em> persimmons, <em>Castelvetrano</em> olives, and
+            Greek feta with fresh oregano
+          </p>
+        </div>
+
+        <div class="menu-item">
+          <h4>Slow Roasted Chicken with Crushed Baby Potatoes</h4>
+          <p>
+            Whole chicken slow-roasted with garlic, Fresno chiles, smoked paprika, and lemon,
+            served with Yukon Gold potatoes
+          </p>
+        </div>
+
+        <h3 class="menu-section">DINNER TWO</h3>
+
+        <div class="menu-item">
+          <h4>A Simple Kale Salad</h4>
+          <p>
+            <em>Lacinato</em> kale with Pecorino Romano, lemon, <em>chile</em> flakes, and
+            toasted breadcrumbs
+          </p>
+        </div>
+
+        <div class="menu-item">
+          <h4>Mushrooms, Sausage, and Rigatoni Pasta</h4>
+          <p>
+            Rigatoni with garlic sausage, wild mushrooms, <em>Parmigiano-Reggiano</em>, and
+            Pecorino Romano
+          </p>
+        </div>
+      </section>
+
+      <!-- MENU B (Vegetarian) -->
+      <section class="menu-card" aria-labelledby="menu-b-title">
+        <header class="menu-header">
+          <h2 class="menu-title" id="menu-b-title">Sample Menu: Vegetarian</h2>
+          <img class="menu-logo" src="images/celery-logo.png" alt="Céleri mark" />
+        </header>
+
+        <h3 class="menu-section">DINNER ONE</h3>
+
+        <div class="menu-item">
+          <h4>Butter Lettuce Salad with Beets, Gruyère, and Walnuts</h4>
+          <p>
+            Roasted baby beets with Gruyère, toasted walnuts, and red wine vinaigrette
+          </p>
+        </div>
+
+        <div class="menu-item">
+          <h4>Orzo Pasta with Pecorino Romano, Cracked Black Pepper, and Lemon Zest</h4>
+          <p>
+            Orzo in the style of <em>cacio e pepe</em>, brightened with lemon zest
+          </p>
+        </div>
+
+        <h3 class="menu-section">DINNER TWO</h3>
+
+        <div class="menu-item">
+          <h4>White Miso Soup with Seaweed and Shimeji Mushrooms</h4>
+          <p>
+            Savory white miso broth with <em>shimeji</em> mushrooms and <em>wakame</em> seaweed
+          </p>
+        </div>
+
+        <div class="menu-item">
+          <h4>Onigiri with Soy-Simmered Egg & Caramelized Sweet Potatoes</h4>
+          <p>
+            Rice balls wrapped in nori with soy-braised egg, served with candied sweet potatoes
+            and black sesame
+          </p>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+</body>
+</html>
