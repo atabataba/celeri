@@ -1,4 +1,4 @@
-/* Sud webfont (self-hosted) */
+
 @font-face {
     font-family: "Sud";
     src: url("fonts/Sud.woff2") format("woff2"),
@@ -8,12 +8,11 @@
     font-display: swap;
   }
   
-  /* ---- Quick knobs ---- */
   :root {
     --bg: #F1E9D6;
     --ink: #0f1a1d;
   
-    /* Hand-drawn loop color */
+ 
     --berkeley-blue: #B1A380;
   
     --pad-y: clamp(16px, 5vh, 48px);
@@ -23,17 +22,17 @@
     --logo-w: clamp(600px, 45vmin, 800px);
     --name-size: clamp(150px, 15vmin, 200px);
   
-    /* tabs tuning */
+ 
     --tab-size: clamp(100px, 14vmin, 160px);
     --tab-gap: clamp(12px, 2vw, 24px);
     --tab-shift: 80px;
   
-    /* reveal animation knobs */
+
     --reveal-duration: 1s;
     --reveal-ease: ease;
     --reveal-offset: 20px;
   
-    /* vertical position of the tabs + info block */
+    
     --right-top: 33%;
   }
   
@@ -43,7 +42,7 @@
   html, body {
     height: 100%;
     margin: 0;
-    overflow: hidden; /* non-scrollable */
+    overflow: hidden; 
   }
   
   body {
@@ -51,7 +50,7 @@
     color: var(--ink);
   }
   
-  /* Full-viewport hero, left aligned */
+
   .hero {
     height: 100vh;
     display: flex;
@@ -62,13 +61,13 @@
     position: relative;
   }
   
-  /* ---------- Fade-in keyframes ---------- */
+
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(var(--reveal-offset)); }
     to   { opacity: 1; transform: translateY(0); }
   }
   
-  /* Row: logo | stacked name */
+
   .lockup {
     display: flex;
     align-items: center;
@@ -99,7 +98,7 @@
   }
   .brand-name > span { text-transform: uppercase; }
   
-  /* ---------------- Right column: tabs + info block ---------------- */
+
   .right {
     position: absolute;
     top: var(--right-top);
@@ -113,7 +112,7 @@
     animation-delay: 0.6s;
   }
   
-  /* Tabs */
+
   .tabs {
     display: flex;
     align-items: center;
@@ -136,7 +135,7 @@
     cursor: pointer;
   }
   
-  /* Tab label (default on RIGHT of icon) */
+
   .tab-label {
     position: absolute;
     left: calc(100% + 0.5rem);
@@ -152,13 +151,13 @@
     color: var(--ink);
   }
   
-  /* Reveal hovered tab label */
+
   .tab:hover .tab-label {
     transform: translate(0, -50%);
     opacity: 1;
   }
   
-  /* Tomato tab label on LEFT */
+
   .tab.tomato .tab-label {
     left: auto;
     right: calc(100% + 0.5rem);
@@ -166,7 +165,7 @@
   }
   .tab.tomato:hover .tab-label { transform: translate(0, -50%); opacity: 1; }
   
-  /* Mushroom tab label on LEFT (slightly more room) */
+
   .tab.mush .tab-label {
     left: auto;
     right: calc(100% + 0.875rem);
@@ -174,7 +173,7 @@
   }
   .tab.mush:hover .tab-label { transform: translate(0, -50%); opacity: 1; }
   
-  /* Insta tab (smaller icon, no label shown) */
+
   .tab.insta img {
     width: calc(var(--tab-size) * 0.7);
     transition: transform 250ms ease, opacity 250ms ease;
@@ -182,31 +181,29 @@
   .tab.insta:hover img { transform: scale(1.1); opacity: 1; }
   .tab.insta .tab-label { display: none; }
   
-  /* Icon emphasis */
+
   .tab:hover img { transform: translateX(8px) scale(1.05); }
-  .tab.mush:hover img { transform: scale(1.05); } /* no sideways nudge for mushroom */
+  .tab.mush:hover img { transform: scale(1.05); } 
   
-  /* Dim non-hovered icons slightly */
+
   .tabs:hover .tab:not(:hover) img {
     opacity: 0.8;
     filter: grayscale(10%);
   }
-  
-  /* ************* Make space behavior ************* */
-  /* Hover broccoli -> shift tomato & mushroom (& insta) right */
+
   .tabs .tab:first-child:hover ~ .tab { transform: translateX(var(--tab-shift)); }
   
-  /* Hover tomato -> shift ONLY broccoli left (mushroom/insta stay) */
+
   .tabs:has(.tab:nth-child(2):hover) .tab:first-child {
     transform: translateX(calc(-1 * var(--tab-shift)));
   }
   
-  /* Hover mushroom -> nudge tomato left slightly (room for label) */
+ 
   .tabs:has(.tab:nth-child(3):hover) .tab:nth-child(2) {
     transform: translateX(calc(-0.3 * var(--tab-shift)));
   }
   
-  /* ---------------- Contact / service block ---------------- */
+
   .contact-block {
     font-family: "Jost", sans-serif;
     font-weight: 300;
@@ -230,14 +227,14 @@
     margin-top: 0.15rem;
   }
   
-  /* -------- Hand-drawn circled email (thin & stable) -------- */
+
   .email-loop{
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-top: 0.7rem;
-    padding: 0.6rem 1.2rem;          /* small padding so loop stays compact */
+    padding: 0.6rem 1.2rem;          
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .06em;
@@ -250,16 +247,15 @@
     z-index: 1;
   }
   
-  /* The SVG wrapper: em-based sizing so it hugs the text consistently */
   .email-loop .loop{
     position: absolute;
-    inset: -0.55em -1.0em;           /* top/btm, left/right “padding” of the loop */
+    inset: -0.55em -1.0em;           
     width: calc(100% + 2.0em);
     height: calc(100% + 1.1em);
     pointer-events: none;
   }
   
-  /* Thin, non-scaling stroke = stays delicate */
+
   .email-loop .loop path{
     fill: none;
     stroke: var(--berkeley-blue);
@@ -270,19 +266,19 @@
     transition: stroke-width .16s ease, opacity .16s ease;
   }
   
-  /* Gentle hover—keeps it elegant */
+
   .email-loop:hover .loop path{
     stroke-width: 2.6px;
     opacity: 0.98;
   }
   
-  /* Keyboard focus */
+
   .email-loop:focus-visible{
     outline: 2px dashed var(--berkeley-blue);
     outline-offset: 6px;
   }
   
-  /* ----------------------------------------------------------------- */
+
   @media (max-width: 700px) {
     :root{
       --logo-w: clamp(200px, 38vmin, 420px);
@@ -299,7 +295,7 @@
     .right { left: 60%; }
   }
   
-  /* Respect reduced-motion */
+
   @media (prefers-reduced-motion: reduce) {
     .lockup,
     .right,
